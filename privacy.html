@@ -1,213 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy | LeadFollow</title>
+Privacy policy and Terms and Conditions
+Every registration needs to include both a privacy policy and terms and conditions, and they need to meet specific requirements that protect your customers and keep you compliant with industry standards. Both are required for approval. In your privacy policy, Twilio checks for language that makes it clear that Messaging Consent data isn't being shared, sold, or bought. Here’s an example of the language we look for:
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+“All the above categories exclude text messaging originator opt-in data and consent; this information won’t be shared with any third parties.”
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+Your privacy policy must:
 
-<style>
+Disclose what data you collect and how it’s used
+Explain that mobile information and opt-in consent won’t be shared with third parties or affiliates for marketing or promotional purposes (required by CTIA)
+Your terms and conditions should generally include: 
 
-body {
-font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-line-height:1.6;
-color:#212529;
-}
+Program or brand name
+Program description
+Message and data rates may apply disclosure
+Message frequency (or recurring message disclosure)
+Customer support contact information
+Complete opt-out instructions (HELP and STOP), displayed in bold
+Link to the privacy policy
+Disclosure that states "Carriers are not liable for any delayed or undelivered messages"
+We recommend consulting with your legal counsel to make sure that your terms of service and privacy policy are compliant with applicable laws and consistent with standards for your particular campaign and industry. 
 
-h1,h2,h3,h4,h5 {
-font-weight:600;
-letter-spacing:-0.02em;
-}
+Pro tip: Consider creating messaging-specific privacy policies and terms and conditions rather than updating your main company documents. Dedicated messaging policies are easier to keep current if requirements change.
 
-.navbar {
-position: sticky;
-top: 0;
-z-index: 1000;
-}
+Sample Messages
+(Console Labels: Sample message #1, #2, #3... | API Fields: message_samples)
 
-section {
-padding:60px 0;
-}
+Provide 2-5 examples of what your actual messages will look like. This helps reviewers understand exactly what your customers will receive.
 
-</style>
+On Twilio Console, you’ll be able to check the following boxes:
 
-</head>
-<body>
+Messages will include embedded links: Check this if you're sending URLs 
+Messages will include phone numbers: Check this if you're including phone numbers 
+Messages include content related to direct lending: This one's critical. Check it if your campaign involves any loan arrangements.
+Messages include age-gated content: Check this if your content requires age verification (alcohol, tobacco, etc.)
 
-<!-- NAVBAR -->
+The Twilio API includes the has_embedded_links field to indicate whether your campaign will send messages with links and the has_embedded_phone if your campaign will send messages with phone numbers.
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+Tips for strong sample messages:
 
-<div class="container">
+Use brackets for variables: Show dynamic content like [Name], [1234], or [Date]
+Include your brand name: Make it clear who's sending the message
+Add opt-out language: Include "Reply STOP to unsubscribe" in at least one sample
+This works	This doesn't
+"Dental check due for {Name}. Visit {website} to schedule an appointment or call {Phone number}. Reply STOP to opt out."	"Here is your code." (No brand name, no context)
+"Hi, is this the owner of 123 Oak St? I want to buy your house." (Cold outreach isn't allowed)
+Keywords & Automated Responses
+You'll need to set up how your system responds to standard keywords. This is how your customers will manage their preferences.
 
-<a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
-<img src="images/logo.png" height="32" class="me-2" alt="LeadFollow logo">
-LeadFollow
-</a>
+Opt-In Keywords & Message
+(Console: Opt-in Keywords | API: opt_in_keywords)
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
+(Console: Opt-in Message | API: opt_in_message)
 
-<div class="collapse navbar-collapse" id="navMenu">
+These are required if users can text a keyword to subscribe.
 
-<ul class="navbar-nav ms-auto align-items-center">
+Keywords
 
-<li class="nav-item">
-<a class="nav-link" href="index.html#features">How It Works</a>
-</li>
+Common ones include START, OPTIN, UNSTOP, IN (max 255 characters total)
 
-<li class="nav-item">
-<a class="nav-link" href="index.html#contact">Contact</a>
-</li>
+Message
+Include your brand name, confirmation of enrollment, help info, and how to opt out
 
-<li class="nav-item dropdown">
+Opt-In Confirmation (Required for all recurring campaigns)
+No matter how someone opts in (web, paper, or text), they need to receive an immediate confirmation message. Here's what it should include:
 
-<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-Policies
-</a>
+Brand Name or Program Name
+"Message and data rates may apply"
+Help contact info
+Opt-out instructions
+Frequency disclosure (like "Message frequency varies")
+Example: "Welcome to Acme Alerts! You'll receive up to 4 msgs/month. Msg & data rates may apply. Reply HELP for help, STOP to cancel."
 
-<ul class="dropdown-menu">
+Opt-Out Keywords & Message
+Required if you're managing opt-outs yourself (not using the default Twilio opt-out or Advanced Opt-Out).
 
-<li>
-<a class="dropdown-item" href="privacy.html">
-Privacy Policy
-</a>
-</li>
+Keywords (API: opt_out_keywords)
 
-<li>
-<a class="dropdown-item" href="sms-policy.html">
-SMS Messaging Policy
-</a>
-</li>
+Common ones include STOP, UNSUBSCRIBE, END, QUIT, HALT (max 255 characters)
 
-</ul>
+Message (API: opt_out_message)
 
-</li>
+Acknowledge the opt-out and confirm no more messages will be sent. Include your brand name.
 
-<li class="nav-item ms-3">
-<a class="btn btn-primary" href="index.html">
-Back to Home
-</a>
-</li>
+Field	What's Required	Example
+Opt-Out Message	Acknowledge the request, state the brand name, confirm no further messages	You are unsubscribed from {Campaign Name} {Description} Alerts. No more messages will be sent. Reply HELP for help or {toll free number}.
+Help Keywords & Message
+Required if you're managing help messages yourself.
 
-</ul>
-
-</div>
-
-</div>
-
-</nav>
-
-<!-- CONTENT -->
-
-<section>
-
-<div class="container">
-
-<h1 class="mb-4">Privacy Policy</h1>
-
-<p>
-LeadFollow respects your privacy. This policy explains how information is collected and used when individuals interact with businesses that use the LeadFollow platform, as well as when users contact LeadFollow directly.
-</p>
-
-<h4 class="mt-4">Information We Collect</h4>
-
-<p>
-When a customer contacts a business using a phone number connected to LeadFollow, or contacts LeadFollow directly, we may collect basic information including:
-</p>
-
-<ul>
-<li>Phone number</li>
-<li>Message content</li>
-<li>Interaction details such as missed calls and responses</li>
-</ul>
-
-<p>
-This information is collected solely to facilitate communication between the customer and the business or to respond to user inquiries.
-</p>
-
-<h4 class="mt-4">How Information Is Used</h4>
-
-<p>
-Information collected through LeadFollow is used only for:
-</p>
-
-<ul>
-<li>Responding to customer inquiries</li>
-<li>Facilitating appointment scheduling</li>
-<li>Supporting ongoing customer communication</li>
-</ul>
-
-<p>
-LeadFollow acts as a communication platform on behalf of the business. Information may be accessible to the business using LeadFollow to manage and respond to customer interactions.
-</p>
-
-<p>
-LeadFollow does not sell, rent, or share personal information with third parties for marketing purposes.
-</p>
-
-<h4 class="mt-4">SMS Communications</h4>
-
-<p>
-When a customer initiates contact with a business or LeadFollow, for example by calling a phone number, and the call is not answered, LeadFollow may send a follow-up SMS message to continue the conversation.
-</p>
-
-<p>
-By initiating contact, the user is consenting to receive SMS messages related to their inquiry.
-</p>
-
-<ul>
-<li>Message frequency varies depending on the interaction</li>
-<li>Message and data rates may apply</li>
-</ul>
-
-<p>
-Customers may opt out at any time by replying <strong>STOP</strong>.
-For assistance, reply <strong>HELP</strong>.
-</p>
-
-<h4 class="mt-4">Data Security</h4>
-
-<p>
-LeadFollow takes reasonable measures to protect customer information and ensure it is used only for its intended purpose.
-</p>
-
-<h4 class="mt-4">Contact</h4>
-
-<p>
-If you have any questions about this Privacy Policy, please contact:
-</p>
-
-<p><strong>support@leadfollow.ai</strong></p>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="bg-light py-4">
-
-<div class="container text-center">
-
-<p class="mb-1 fw-semibold">© 2026 LeadFollow</p>
-
-<p class="mb-0">
-<a href="privacy.html">Privacy Policy</a> |
-<a href="sms-policy.html">SMS Messaging Policy</a>
-</p>
-
-</div>
-
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+Keywords (API: help_keywords): Common ones include HELP, INFO, SUPPORT (max 255 characters)
+Message (API: help_message): Provide support options (email, website, or phone). Include your brand name.
+Field	What's Required	Example
+Help Message	Provide a way to get support	{Campaign Name} {Description} Alerts: Help at {source of help #1} or {toll free number}. Msg&data rates may apply. {Message frequency}. Text STOP to cancel.
